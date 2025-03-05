@@ -44,8 +44,8 @@ cv.imshow('Drawing', img)
 cv.setMouseCallback('Drawing', draw) # Drawing 윈도우에 draw 콜백 함수 지정
 
 while(True):
-    key = cv.waitKey(1)
-    if  key == ord('q'):
+    key = cv.waitKey(1) # 키보드 입력
+    if  key == ord('q'): 
         cv.destroyAllWindows()
         break
     elif key == ord('r'):
@@ -54,5 +54,5 @@ while(True):
         img_copy = img.copy()
         cv.imshow('Drawing', img)
     elif key == ord('s'):
-        if cv.getWindowProperty('ROI', cv.WND_PROP_VISIBLE) >= 1 :
+        if cv.getWindowProperty('ROI', cv.WND_PROP_VISIBLE) >= 1 : # ROI창이 열려 있을 경우에만 실행
             cv.imwrite("ROI.jpg", img[start_y:end_y, start_x:end_x])
