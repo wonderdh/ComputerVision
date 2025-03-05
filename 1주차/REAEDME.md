@@ -97,7 +97,91 @@ cv.destroyAllWindows()
 ```
 
 ## 실행결과
-![result.jpg](https://github.com/wonderdh/ComputerVision/blob/main/1%EC%A3%BC%EC%B0%A8/result.jpg)
+![result2.jpg](https://github.com/wonderdh/ComputerVision/blob/main/1%EC%A3%BC%EC%B0%A8/result2.png)
+
+# 3.OpenCV - 마우스로 영역 선택 및 ROI(관심영역) 추출
+
+📖 설명
+이미지를 불러오고 사용자가 마우스로 클릭하고 드래그하여 관심영역(ROI)을 선택합니다.
+
+선택한 영역만 별도로 저장하거나 표시할 수 있습니다.
+
+🛠️ 요구사항
+* 이미지를 불러오고 화면에 출력합니다.
+
+* cv.setMouseCallback()을 사용하여 마우스 이벤트를 처리합니다.
+
+* 사용자가 클릭한 시작점에서 드래그하여 사각형을 그리며 영역을 선택합니다.
+
+* 마우스를 놓으면 해당 영역을 잘라내서 별도의 창에 출력합니다.
+
+* r 키를 누르면 영역 선택을 리셋하고 처음부터 다시 선택할 수 있습니다.
+
+* s 키를 누르면 선택한 영역을 이미지 파일로 저장합니다.
+
+```python
+import cv2 as cv
+import sys
+import numpy as np
+
+img = cv.imread('soccer.jpg')
+#img = cv.resize(img, dsize=(0,0), fx=0.5, fy = 0.5) 
+
+if img is None:
+    sys.exit('파일이 존재하지 않습니다.')
+
+img_copy = img.copy()
+
+def draw(event, x, y, flags, param):
+    global ix, iy
+    global start_x, end_x, start_y, end_y
+
+    if event == cv.EVENT_LBUTTONDOWN:
+        ix, iy = x, y
+    elif event == cv.EVENT_LBUTTONUP:
+        # 좌표 정렬 및 이미지 경계 확인
+        start_x, end_x = min(ix, x), max(ix, x)
+        start_y, end_y = min(iy, y), max(iy, y)
+        
+        # 이미지 경계 내로 좌표 제한
+        start_x = max(0, start_x)
+        start_y = max(0, start_y)
+        end_x = min(img.shape[1], end_x)
+        end_y = min(img.shape[0], end_y)
+        
+        # 영역 추출 및 표시
+        if start_x < end_x and start_y < end_y:
+            roi = img[start_y:end_y, start_x:end_x]
+            if cv.getWindowProperty('ROI', cv.WND_PROP_VISIBLE) >= 1 :
+                cv.destroyWindow('ROI')
+
+            cv.imshow('ROI', roi)
+            cv.rectangle(img_copy, (start_x, start_y), (end_x, end_y), (0,0,255), 2)
+        
+    cv.imshow('Drawing', img_copy)
+
+cv.namedWindow('Drawing')
+cv.imshow('Drawing', img)
+
+cv.setMouseCallback('Drawing', draw) # Drawing 윈도우에 draw 콜백 함수 지정
+
+while(True):
+    key = cv.waitKey(1) # 키보드 입력
+    if  key == ord('q'): 
+        cv.destroyAllWindows()
+        break
+    elif key == ord('r'):
+        cv.destroyWindow('Cut')
+        img = cv.imread('soccer.jpg')
+        img_copy = img.copy()
+        cv.imshow('Drawing', img)
+    elif key == ord('s'):
+        if cv.getWindowProperty('ROI', cv.WND_PROP_VISIBLE) >= 1 : # ROI창이 열려 있을 경우에만 실행
+            cv.imwrite("ROI.jpg", img[start_y:end_y, start_x:end_x])
+```
+
+## 실행결과
+![result2.jpg](https://github.com/wonderdh/ComputerVision/blob/main/1%EC%A3%BC%EC%B0%A8/result2.png)
 
 
 
