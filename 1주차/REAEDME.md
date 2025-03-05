@@ -181,7 +181,7 @@ while(True):
 ```
 
 ## 실행결과
-![result2.jpg](https://github.com/wonderdh/ComputerVision/blob/main/1%EC%A3%BC%EC%B0%A8/result2.png)
+![result3.jpg](https://github.com/wonderdh/ComputerVision/blob/main/1%EC%A3%BC%EC%B0%A8/result3.png)
 
 
 
