@@ -32,7 +32,7 @@ plt.show()
 ```
 
 ## 실행결과
-![result.jpg](https://github.com/wonderdh/ComputerVision/blob/main/1%EC%A3%BC%EC%B0%A8/result.jpg)
+![1_result.png](https://github.com/wonderdh/ComputerVision/blob/main/3%EC%A3%BC%EC%B0%A8/1_result.png)
 
 
 # 2.모폴로지 연산 적용하기
@@ -81,7 +81,7 @@ cv.destroyAllWindows()
 ```
 
 ## 실행결과
-![result2.jpg](https://github.com/wonderdh/ComputerVision/blob/main/1%EC%A3%BC%EC%B0%A8/result2.png)
+![2_result.png](https://github.com/wonderdh/ComputerVision/blob/main/3%EC%A3%BC%EC%B0%A8/2_result.png)
 
 # 3.기하 연산 및 선형 보간 적용하기
 
@@ -127,7 +127,7 @@ cv.destroyAllWindows()
 ```
 
 ## 실행결과
-![result3.jpg](https://github.com/wonderdh/ComputerVision/blob/main/1%EC%A3%BC%EC%B0%A8/result3.png)
+![3_result.png](https://github.com/wonderdh/ComputerVision/blob/main/3%EC%A3%BC%EC%B0%A8/3_result.png)
 
 
 
