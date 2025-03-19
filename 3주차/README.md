@@ -33,7 +33,7 @@ plt.show()
 
 ## 실행결과
 ![1_result.png](https://github.com/wonderdh/ComputerVision/blob/main/3%EC%A3%BC%EC%B0%A8/1_result.png)
-
+![1_result_2.png](https://github.com/wonderdh/ComputerVision/blob/main/3%EC%A3%BC%EC%B0%A8/1_reuslt_2.png)
 
 # 2.모폴로지 연산 적용하기
 
