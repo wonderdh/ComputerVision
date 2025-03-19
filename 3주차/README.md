@@ -79,8 +79,8 @@ cv.imshow("result", result)
 cv.waitKey()
 cv.destroyAllWindows()
 ```
-
 ## 실행결과
+팽창 침식 열림 닫힘순
 ![2_result.png](https://github.com/wonderdh/ComputerVision/blob/main/3%EC%A3%BC%EC%B0%A8/2_result.png)
 
 # 3.기하 연산 및 선형 보간 적용하기
