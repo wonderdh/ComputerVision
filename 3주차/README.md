@@ -116,6 +116,40 @@ cv.imshow("result", result)
 cv.waitKey()
 cv.destroyAllWindows()
 ```
+
+## cv.getStructuringElement() 함수 설명:  커널 생
+```python
+kernel = cv.getStructuringElement(cv.MORPH_RECT, (5, 5))
+```
+
+## 인자 설명:
+
+* cv.MORPH_RECT: 구조 요소의 모양을 사각형으로 지정합니다.
+
+* (5, 5): 구조 요소의 크기를 5x5로 지정합니다.
+
+## 함수 설명: OpenCV의 cv.morphologyEx() 함수는 형태학적 연산을 수행합니다.
+```python
+b_dilation = cv.morphologyEx(b, cv.MORPH_DILATE, kernel)
+b_erosion = cv.morphologyEx(b, cv.MORPH_ERODE, kernel)
+b_open = cv.morphologyEx(b, cv.MORPH_OPEN, kernel)
+b_close = cv.morphologyEx(b, cv.MORPH_CLOSE, kernel)
+```
+
+## 인자 설명:
+
+* b: 연산 대상 이미지입니다.
+
+* kernel: 구조 요소입니다.
+
+* cv.MORPH_DILATE: 팽창 연산을 수행합니다. 
+
+* cv.MORPH_ERODE: 침식 연산을 수행합니다. 
+
+* cv.MORPH_OPEN: 열림 연산을 수행합니다. 침식 후 팽창을 순차적으로 적용합니다.
+
+* cv.MORPH_CLOSE: 닫힘 연산을 수행합니다. 팽창 후 침식을 순차적으로 적용합니다.
+
 ## 실행결과
 팽창 침식 열림 닫힘순
 ![2_result.png](https://github.com/wonderdh/ComputerVision/blob/main/3%EC%A3%BC%EC%B0%A8/2_result.png)
