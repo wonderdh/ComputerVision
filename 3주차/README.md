@@ -196,7 +196,47 @@ cv.waitKey()
 cv.destroyAllWindows()
 
 ```
+## 함수 설명: OpenCV의 cv.getRotationMatrix2D() 함수는 2D 회전 및 스케일 변환을 위한 어파인 변환 행렬을 생성합니다.
+```python
+angle = 45  # 회전 각도 (반시계 방향)
+scale = 1.5  # 스케일 (1.0은 크기 변화 없음)
+change_matrix = cv.getRotationMatrix2D(center, angle, scale)
+```
+# 인자 설명:
 
+* center: 회전의 중심점입니다.
+
+* angle: 반시계 방향으로의 회전 각도입니다.
+
+* scale: 이미지의 스케일 변환 비율입니다.
+
+![Matrix.png](https://github.com/wonderdh/ComputerVision/blob/main/3%EC%A3%BC%EC%B0%A8/Matrix.png)
+
+## 함수 설명: OpenCV의 cv.warpAffine() 함수는 어파인 변환 행렬을 사용하여 이미지의 형태를 변환합니다.
+```python
+changed_img = cv.warpAffine(img, change_matrix, (width, height))
+```
+
+## 인자 설명:
+
+* img: 변환할 원본 이미지입니다.
+
+* change_matrix: 회전 및 스케일 변환을 위한 어파인 변환 행렬입니다.
+
+* (width, height): 결과 이미지의 크기입니다. 이 경우, 원본 이미지와 동일한 크기로 설정되어 있지만, 실제로 변환된 이미지의 크기는 스케일링에 의해 달라질 수 있습니다.
+
+## cv.resize() 함수 설명:  이미지의 크기를 조정합니다.
+```python
+inter_changed_img = cv.resize(changed_img, (width, height), interpolation=cv.INTER_LINEAR)
+```
+## 인자 설명:
+
+* changed_img: 크기를 조정할 이미지입니다.
+
+* (width, height): 결과 이미지의 크기입니다. 이 경우, 원본 이미지의 크기로 설정되어 있습니다.
+
+* interpolation=cv.INTER_LINEAR: 이미지 크기 조정 시 사용할 보간법을 지정합니다. cv.INTER_LINEAR는 선형 보간법을 사용합니다.
+* 
 ## 실행결과
 ![3_result.png](https://github.com/wonderdh/ComputerVision/blob/main/3%EC%A3%BC%EC%B0%A8/3_result.png)
 
