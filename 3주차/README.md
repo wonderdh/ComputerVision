@@ -31,6 +31,43 @@ plt.plot(h, color='r', linewidth = 1)
 plt.show()
 ```
 
+
+## cv.calcHist() 함수 설명: OpenCV의 cv.calcHist() 함수는 이미지의 히스토그램을 계산합니다.
+```python
+gh = cv.calcHist([gray], [0], None, [256], [0,256])
+```
+
+## 인자 설명:
+
+* [gray]: 히스토그램을 계산할 이미지(들)입니다. 이 경우, Grayscale 이미지입니다.
+
+* ``: 채널 번호입니다. Grayscale는 단일 채널이므로 0입니다.
+
+* None: 마스크를 사용하지 않음을 나타냅니다.
+
+* [256]: 각 채널에 대한 히스토그램의 bin 수입니다.
+
+* [256]: 각 채널의 픽셀 값 범위입니다. Grayscale에서는 0에서 255까지입니다.
+
+## cv.threshold() 함수 설명: OpenCV의 cv.threshold() 함수는 이미지의 픽셀 값을 기준으로 이진화합니다.
+```python
+t, bin_img = cv.threshold(gray, 127, 255, cv.THRESH_BINARY + cv.THRESH_OTSU)
+```
+
+## 인자 설명:
+
+* gray: 이진화할 Grayscale 이미지입니다.
+
+* 127: 임계값으로, 이진화에 사용되지만 cv.THRESH_OTSU가 사용되면 무시됩니다.
+
+* 255: 최대 픽셀 값으로, 이진화된 이미지에서 0이 아닌 픽셀의 값이 됩니다.
+
+* cv.THRESH_BINARY + cv.THRESH_OTSU: 이진화 방법을 지정합니다. cv.THRESH_OTSU는 자동으로 최적의 임계값을 찾습니다.
+
+## return 값:
+* 임계값 (t) : cv.THRESH_OTSU 플래그가 사용되지 않을 경우, 지정된 임계값이 그대로 반환됩니다. 그러나 cv.THRESH_OTSU가 사용되면, 자동으로 계산된 최적의 임계값이 반환됩니다.
+* 이진화된 이미지 (bin_img): 입력 이미지에 대해 지정된 임계값을 기준으로 이진화된 결과 이미지입니다. 
+
 ## 실행결과
 ![1_result.png](https://github.com/wonderdh/ComputerVision/blob/main/3%EC%A3%BC%EC%B0%A8/1_result.png)
 ![1_result_2.png](https://github.com/wonderdh/ComputerVision/blob/main/3%EC%A3%BC%EC%B0%A8/1_reuslt_2.png)
