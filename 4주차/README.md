@@ -40,7 +40,7 @@ plt.show()
 ```
 
 ## 실행결과
-![1_result.png](https://github.com/wonderdh/ComputerVision/blob/main/3%EC%A3%BC%EC%B0%A8/1_result.png)
+![1_result.png](https://github.com/wonderdh/ComputerVision/blob/main/4%EC%A3%BC%EC%B0%A8/result_1.png)
 
 # 2.캐니 에지 및 허프 변환을 이용한 직선 검출
 
@@ -94,7 +94,7 @@ plt.show()
 
 ```
 ## 실행결과
-![2_result.png](https://github.com/wonderdh/ComputerVision/blob/main/3%EC%A3%BC%EC%B0%A8/2_result.png)
+![2_result.png](https://github.com/wonderdh/ComputerVision/blob/main/4%EC%A3%BC%EC%B0%A8/result_2.png)
 
 # 3.GrabCut을 이용한 대화식 영역 분할 및 객체 추출
 
@@ -190,4 +190,4 @@ plt.show()
 ```
 
 ## 실행결과
-![3_result.png](https://github.com/wonderdh/ComputerVision/blob/main/3%EC%A3%BC%EC%B0%A8/3_result.png)
+![3_result.png](https://github.com/wonderdh/ComputerVision/blob/main/4%EC%A3%BC%EC%B0%A8/result_3.png)
