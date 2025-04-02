@@ -31,7 +31,7 @@ result = np.hstack([img, gray])
 plt.imshow(result)
 plt.show()
 ```
-
+cv.DrawMatchesFlags_DRAW_RICH_KEYPOINTS 플래그에 의해서 원의 크기는 특징점이 검출된 스케일 크기의 영향을 받으며, 검출된 스케일에 비례하는 크기의 원이 그려짐(원이 클수록 해당 특징점은 더 큰 영역에서 의미 있는 패턴을 가지고 있으며, 작은 원은 더 세밀한 특징을 나타낸다고 해석할 수 있음)
 
 
 ## 실행결과
@@ -164,10 +164,8 @@ cv.destroyAllWindows()
 ## 실행결과
 SIFT 매칭
 ![5_3_1_result.png](https://github.com/wonderdh/ComputerVision/blob/main/5%EC%A3%BC%EC%B0%A8/5_3_1.png)
-원본 이미지
+비교 이미지
 ![5_3_2_result.png](https://github.com/wonderdh/ComputerVision/blob/main/5%EC%A3%BC%EC%B0%A8/5_3_2.png)
-변환된 이미지
-![5_3_3_result.png](https://github.com/wonderdh/ComputerVision/blob/main/5%EC%A3%BC%EC%B0%A8/5_3_3.png)
 
 
 
