@@ -14,13 +14,21 @@ kp1, des1 = sift.detectAndCompute(gray1, None)
 kp2, des2 = sift.detectAndCompute(gray2, None)
 
 flann_matcher = cv.FlannBasedMatcher.create()
-knn_match = flann_matcher.knnMatch(des1, des2, 2)
+flann_knn_match = flann_matcher.knnMatch(des1, des2, 2)
 
 T = 0.7
-good_match = []
-for nearest1, nearest2 in knn_match:
+flann_good_match = []
+for nearest1, nearest2 in flann_knn_match:
     if(nearest1.distance/nearest2.distance) < T:
-        good_match.append(nearest1)
+        flann_good_match.append(nearest1)
+
+bf_matcher = cv.BFMatcher()
+bf_knn_match = bf_matcher.knnMatch(des1, des2, 2)
+
+bf_good_match = []
+for nearest1, nearest2 in bf_knn_match:
+    if (nearest1.distance / nearest2.distance) < T:
+        bf_good_match.append(nearest1)        
 
 img_match = np.empty((max(img1.shape[0], img2.shape[0]), img1.shape[1] + img2.shape[1], 3), dtype = np.uint8)
 cv.drawMatches(img1, kp1, img2, kp2, good_match, img_match, flags=cv.DrawMatchesFlags_NOT_DRAW_SINGLE_POINTS)
