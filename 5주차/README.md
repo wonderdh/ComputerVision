@@ -32,6 +32,8 @@ plt.imshow(result)
 plt.show()
 ```
 
+
+
 ## 실행결과
 ![5_1_result.png](https://github.com/wonderdh/ComputerVision/blob/main/5%EC%A3%BC%EC%B0%A8/5_1.png)
 
@@ -145,15 +147,7 @@ h2, w2 = img2.shape[0], img2.shape[1]
 # warpPerspective를 사용하여 img1을 img2의 관점으로 변환합니다
 img1_warped = cv.warpPerspective(img1, H, (w2, h2))
 
-# 원본 이미지와 변환된 이미지를 비교하기 위한 결과 이미지 생성
-result = np.zeros((max(h1, h2), w1 + w2, 3), dtype=np.uint8)
-result[:h1, :w1] = img1
-result[:h2, w1:] = img2
-
-# 변환된 이미지와 원본 이미지 비교
-comparison = np.zeros((h2, w2*2, 3), dtype=np.uint8)
-comparison[:, :w2] = img2
-comparison[:, w2:] = img1_warped
+overlay = cv.addWeighted(img1, 0.5, img1_warped, 0.5, 0)
 
 # 매칭 결과를 보여줍니다
 img_match = np.empty((max(h1, h2), w1 + w2, 3), dtype=np.uint8)
@@ -161,8 +155,7 @@ cv.drawMatches(img1, kp1, img2, kp2, good_match, img_match, flags=cv.DrawMatches
 
 # 결과를 출력합니다
 cv.imshow('Matching', img_match)
-cv.imshow('img', result)
-cv.imshow('changed', comparison)
+cv.imshow('Overlay', overlay)
 
 k = cv.waitKey(0)
 cv.destroyAllWindows()
