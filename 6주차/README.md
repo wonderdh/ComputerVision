@@ -148,6 +148,10 @@ loss, accuracy = model.evaluate(x_test, y_test)
 print(f"Test Loss: {loss}, Test Accuracy: {accuracy}")
 ```
 
+## 예측 결과
+![6_2_2_result.png](https://github.com/wonderdh/ComputerVision/blob/main/6%EC%A3%BC%EC%B0%A8/6_2_2_result.png)
+
+
 ## 테스트 이미지에 대한 예측을 수행
 ```python
 # 테스트 이미지 예측
@@ -156,27 +160,40 @@ print("Predictions:", predictions)
 ```
 
 ## 예측 결과
-![2_result.png](https://github.com/wonderdh/ComputerVision/blob/main/3%EC%A3%BC%EC%B0%A8/2_result.png)
+![6_2_1_result.png](https://github.com/wonderdh/ComputerVision/blob/main/6%EC%A3%BC%EC%B0%A8/6_2_1_result.png)
+
+## 결과 해석
+CNN 모델의 predictions 출력 결과는 각 테스트 이미지에 대한 클래스별 확률 분포를 나타냅니다. 구체적인 의미는 다음과 같습니다:
+
+1. predictions 출력 구조
+* predictions는 5개 테스트 이미지에 대한 예측 결과를 포함합니다 (x_test[:5]로 5개 이미지 선택).
+
+* 각 이미지에 대해 10개의 숫자가 출력되며, 이는 CIFAR-10의 10개 클래스에 대한 확률 값을 의미합니다.
+
+예: predictions = [0.02, 0.01, 0.1, 0.05, 0.7, 0.01, 0.0, 0.05, 0.02, 0.04]
+
+2. 숫자의 의미
+* 각 숫자: 해당 클래스에 속할 확률 (0~1 사이 값).
+
+* softmax 활성화 함수로 인해 모든 확률의 합은 1이 됩니다.
+
+* 가장 높은 확률을 가진 클래스가 모델의 최종 예측 결과입니다.
+
+예시:
+predictions = [0.02, 0.01, 0.1, 0.05, 0.7, 0.01, 0.0, 0.05, 0.02, 0.04]
+→ 4번째 인덱스(0.7)가 가장 높으므로 클래스 4로 예측합니다.
 
 
-## 실행결과
-팽창 침식 열림 닫힘순
-![2_result.png](https://github.com/wonderdh/ComputerVision/blob/main/3%EC%A3%BC%EC%B0%A8/2_result.png)
-
-# 3.기하 연산 및 선형 보간 적용하기
+# 3.전이 학습을 활용한 이미지 분류기 개선
 
 📖 설명
-* 주어진 이미지를 다음과 같이 변환.
-* 이미지를 45도 회전.
-* 회전된 이미지를 1.5배 확대.
-* 회전 및 확대된 이미지에 선형 보간(Bilinear Interpolation)을 적용하여 부드럽게 표현.
-
-
+* 사전 학습된 모델(예: VGG16)을 활용하여 전이 학습을 수행하고, 이미지 분류기의 성능을 향상.
+  
 🛠️ 요구사항
-* cv.getRotationMatrix2D()를 사용하여 회전 변환 행렬을 생성하세요.
-* cv.warpAffine()를 사용하여 이미지를 회전 및 확대하세요.
-* cv.INTER_LINEAR을 사용하여 선형 보간을 적용하세요.
-* 원본 이미지와 회전 및 확대된 이미지를 한 화면에 비교하세요
+* 사전 학습된 VGG16 모델을 로드하고, 최상위 레이어를 제거합니다.
+* 새로운 데이터셋에 맞게 추가 레이어를 설계합니다.
+* 모델을 훈련시키고 성능을 평가합니다.
+* 기존 모델과의 성능을 비교합니다.
 
 ```python
 import cv2 as cv
