@@ -40,6 +40,31 @@ model.fit(x_train, y_train, epochs=10, batch_size=64, validation_data=(x_test, y
 loss, accuracy = model.evaluate(x_test, y_test)
 print(f"Test Loss: {loss}, Test Accuracy: {accuracy}")
 
-# 테스트 이미지 예측
-predictions = model.predict(x_test[:5])  # 테스트 데이터 일부에 대해 예측 수행
-print("Predictions:", predictions)
+cifar10_classes = [
+    "Airplane",  # 0
+    "Automobile",  # 1
+    "Bird",  # 2
+    "Cat",  # 3
+    "Deer",  # 4
+    "Dog",  # 5
+    "Frog",  # 6
+    "Horse",  # 7
+    "Ship",  # 8
+    "Truck"  # 9
+]
+
+
+# 테스트 이미지 예측 및 결과 비교
+predictions = model.predict(x_test[-5:])  # 마지막 5개 데이터 예측
+predicted_classes = predictions.argmax(axis=1)  # 최대 확률 클래스 선택
+
+# 실제 정답 레이블 추출 (원-핫 인코딩 되돌리기)
+true_labels = y_test[-5:].argmax(axis=1)
+
+# 결과 출력
+print("\n마지막 5개 테스트 이미지 예측 결과:")
+for i in range(5):
+    print(f"이미지 {i+1}:")
+    print(f"  예측: {cifar10_classes[predicted_classes[i]]} ({predicted_classes[i]})")
+    print(f"  정답: {cifar10_classes[true_labels[i]]} ({true_labels[i]})")
+    print("-" * 30)
