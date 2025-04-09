@@ -84,6 +84,7 @@ print(f"테스트 정확도: {test_acc:.4f}")
 
 ## 실행 결과
 ![6_1_result.png](https://github.com/wonderdh/ComputerVision/blob/main/6%EC%A3%BC%EC%B0%A8/6_1_result.png)
+![6_1_2_result.png](https://github.com/wonderdh/ComputerVision/blob/main/6%EC%A3%BC%EC%B0%A8/6_1_2_result.png)
 
 
 # 2.CIFAR-10 데이터셋을 활용한 CNN 모델 구축
