@@ -54,7 +54,7 @@ while True:
     res = yolo_detect(frame, model, out_layers)
     persons = [res[i] for i in range(len(res)) if res[i][5]==0]
 
-    if len(persons) > 0:
+    if len(persons) == 0:
         tracks = sort.update()
     else :
         tracks = sort.update(np.array(persons))
