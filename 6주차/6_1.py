@@ -2,7 +2,6 @@ import tensorflow as tf
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, Flatten
 from tensorflow.keras.datasets import mnist
-import matplotlib.pyplot as plt
 
 # 1. MNIST 데이터셋 로드 및 전처리
 (x_train, y_train), (x_test, y_test) = mnist.load_data()
@@ -30,19 +29,9 @@ model.compile(
 
 # 4. 모델 훈련
 print("모델 훈련 시작...")
-history = model.fit(x_train, y_train, epochs=5, batch_size=32, validation_data=(x_test, y_test))
+model.fit(x_train, y_train, epochs=5, batch_size=32)
 
-# 5. 정확도 그래프 시각화
-plt.plot(history.history['accuracy'], label='Train Accuracy')       # 훈련 정확도
-plt.plot(history.history['val_accuracy'], label='Validation Accuracy') # 검증 정확도
-plt.title('Model Accuracy')
-plt.xlabel('Epochs')
-plt.ylabel('Accuracy')
-plt.legend()
-plt.grid()
-plt.show()
-
-# 6. 모델 평가
+# 5. 모델 평가
 print("모델 평가...")
 test_loss, test_acc = model.evaluate(x_test, y_test)
 print(f"테스트 정확도: {test_acc:.4f}")
